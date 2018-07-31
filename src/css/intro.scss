@@ -1,0 +1,55 @@
+figure {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#svgContainer {
+  padding: 5vw;
+  width: 90vw;
+}
+
+#svgContainer > * {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 0.85px;
+}
+
+.button {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-font-smoothing: antialiased;
+  background-color: #222; /* dark blue */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 1px;
+  color: white;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  Transition: background-color 0.1s ease-out;
+  -webkit-filter: url("#filter");
+  // filter: url("#filter");
+}
+
+.svg-filters {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: visible;
+}
+
+.start {
+  position: relative;
+}
+
+.button:hover {
+  background-color: #2CD892; /* green */
+}

@@ -1,0 +1,191 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+  font-family: 'Raleway';
+}
+
+.intro {
+  position: absolute;
+  width: 100%;
+  color: white;
+  font-size: 80px;
+  span {
+    display: inline-block;
+    text-shadow: 0 0 0 green;
+    animation: smoky 5s 3s infinite;
+  }
+  span:nth-child(even){
+    animation-name: smoky-mirror;
+  }
+}
+
+.back {
+  position: absolute;
+  top: -200px;
+  left: 100px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  transition-delay: 400ms !important;
+  span {
+    margin-right: 10px;
+  }
+  p {
+    transition: opacity 250ms ease;
+    &:hover {
+      opacity: .5;
+    }
+  }
+}
+
+#text {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 3;
+  transition: opacity 300ms ease;
+  width: 100%;
+}
+
+.types {
+  display: inline-block;
+  list-style: none;
+  font-size: 50px;
+  padding: 0;
+  margin: 0;
+  li {
+    margin: 5px 0;
+    text-align: left;
+    transition: opacity 200ms ease;
+    cursor: pointer;
+    &:hover {
+      opacity: .5;
+    }
+  }
+}
+
+.fade {
+  opacity:1;
+  transition: all 500ms;
+  z-index: 5;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+canvas {
+  z-index: -1;
+}
+
+canvas.active {
+  z-index: 10;
+}
+
+.play-controls {
+  transition-delay: 400ms;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  .play {
+    display: flex;
+    justify-content: center; align-items: center;
+    text-decoration: none;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 100px;
+    height: 100px;
+    font-family: 'Monoton';
+    color: white;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #5a99d4;
+    animation: pulse 1.5s infinite;
+    transition: all 200ms ease;
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+
+  .glitch {
+    color:white;
+    font-size:80px;
+    font-family: 'Permanent Marker';
+    position:relative;
+    margin:0 auto;
+  }
+}
+
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  width: 100%;
+  left: calc(50% + 2px);
+  transform: translateX(-50%);
+  text-shadow:-1px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  opacity: 0;
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  width: 100%;
+  left: calc(50% - 2px);
+  transform: translateX(-50%);
+  text-shadow:1px 0 blue;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+  }
+  70% {
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+    100% {
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+  }
+}
+
+@import './intro.scss'
